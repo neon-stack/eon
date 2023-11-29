@@ -13,6 +13,8 @@ services:
       - ember-nexus-rabbitmq
     volumes:
       - ../../:/var/www/html
+    profiles:
+      - api
 
   ember-nexus-neo4j:
     container_name: ember-nexus-neo4j
@@ -22,6 +24,8 @@ services:
       - "7687"
     environment:
       - NEO4J_AUTH=neo4j/password
+    profiles:
+      - database
 
   ember-nexus-mongodb:
     container_name: ember-nexus-mongodb
@@ -31,6 +35,8 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongodb
       - MONGO_INITDB_ROOT_PASSWORD=password
+    profiles:
+      - database
 
   ember-nexus-elasticsearch:
     container_name: ember-nexus-elasticsearch
@@ -41,6 +47,8 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
       - xpack.security.enrollment.enabled=true
+    profiles:
+      - database
 
   ember-nexus-redis:
     container_name: ember-nexus-redis
@@ -48,6 +56,8 @@ services:
     expose:
       - "6379"
     command: redis-server --save 20 1 --loglevel warning --requirepass redis-password
+    profiles:
+      - database
 
   ember-nexus-rabbitmq:
     container_name: ember-nexus-rabbitmq
@@ -58,3 +68,5 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password
+    profiles:
+      - database
