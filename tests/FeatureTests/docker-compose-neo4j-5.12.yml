@@ -12,7 +12,7 @@ services:
       - ember-nexus-redis
       - ember-nexus-rabbitmq
     healthcheck:
-      test: php bin/console healthcheck
+      test: ["CMD-SHELL", "php bin/console healthcheck"]
       interval: 20s
       timeout: 3s
       retries: 12
