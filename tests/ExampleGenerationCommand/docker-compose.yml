@@ -12,7 +12,7 @@ services:
       - ember-nexus-redis
       - ember-nexus-rabbitmq
     healthcheck:
-      disable: true
+      test: ["NONE"]
     volumes:
       - ../../:/var/www/html
 
