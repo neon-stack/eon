@@ -5,6 +5,12 @@ services:
     image: api:dev-amd
     expose:
       - "80"
+    depends_on:
+      - ember-nexus-neo4j
+      - ember-nexus-mongodb
+      - ember-nexus-elasticsearch
+      - ember-nexus-redis
+      - ember-nexus-rabbitmq
     volumes:
       - ../../:/var/www/html
 
