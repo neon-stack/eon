@@ -12,7 +12,10 @@ services:
       - ember-nexus-redis
       - ember-nexus-rabbitmq
     healthcheck:
-      test: ["NONE"]
+      test: php bin/console healthcheck
+      interval: 20s
+      timeout: 3s
+      retries: 12
     volumes:
       - ../../:/var/www/html
 
